@@ -2,7 +2,7 @@
 	"name":        "germania-kg/cookie",
 
 	"type":        "library",
-	"license":     "proprietary",
+	"license":     "MIT",
 
 	"authors": [
 		{
