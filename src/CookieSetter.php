@@ -6,7 +6,16 @@ use Psr\Log\NullLogger;
 
 class CookieSetter
 {
+
+    /**
+     * @var LoggerInterface
+     */
     public $logger;
+
+
+    /**
+     * @var array
+     */
     public $defaults = [
         'path'     => '',
         'domain'   => '',
@@ -15,6 +24,10 @@ class CookieSetter
     ];
 
 
+    /**
+     * @param array                $defaults Cookie defaults
+     * @param LoggerInterface|null $logger   Optional PSR-3 Logger
+     */
     public function __construct( $defaults = array(), LoggerInterface $logger = null)
     {
         $this->defaults = array_merge($this->defaults, $defaults);
