@@ -32,14 +32,16 @@ $value = $getter( 'foo' );
 <?php
 use Germania\Cookie\CookieSetter;
 
-// Optional Defaults
+// Optional/Defaults
 $defaults = [
     'path'     => '',
     'domain'   => '',
     'secure'   => false,
     'httponly' => false
 ];
+
 // Optionally, have your PSR-3 Logger at hand
+$setter = new CookieSetter( $defaults );
 $setter = new CookieSetter( $defaults, $log);
 $boolean = $setter( 'foo', 'bar', time()+3600 );
 ```
