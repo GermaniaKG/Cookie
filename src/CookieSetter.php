@@ -4,6 +4,10 @@ namespace Germania\Cookie;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
+/**
+ * Callable wrapper around PHP's setcookie function with logging opportunity.
+ */
+
 class CookieSetter
 {
 

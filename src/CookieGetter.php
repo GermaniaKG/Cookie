@@ -4,6 +4,10 @@ namespace Germania\Cookie;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
+
+/**
+ * Callable wrapper for retrieving and filtering cookie values with logging opportunity.
+ */
 class CookieGetter
 {
 
