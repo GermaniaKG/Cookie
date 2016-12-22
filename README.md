@@ -16,10 +16,13 @@ $ composer require germania-kg/cookie
 <?php
 use Germania\Cookie\CookieGetter;
 
-// Optionally, have your PSR-3 Logger at hand
+// Optionally:
+// have your PSR-3 Logger at hand
+// or set filter type:
+$getter = new CookieGetter( INPUT_COOKIE);
 $getter = new CookieGetter( INPUT_COOKIE, $log);
+$getter = new CookieGetter( INPUT_COOKIE, $log, \FILTER_SANITIZE_STRING);
 $value = $getter( 'foo' );
-
 ```
 
 

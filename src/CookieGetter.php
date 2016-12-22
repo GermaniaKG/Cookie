@@ -6,13 +6,29 @@ use Psr\Log\NullLogger;
 
 class CookieGetter
 {
-    public $logger;
-    public $input_type;
-
-    public $filter_type = \FILTER_SANITIZE_STRING;
 
     /**
-     * See: http://php.net/manual/de/function.filter-input.php
+     * @var LoggerInterface
+     */
+    public $logger;
+
+    /**
+     * @var int
+     */
+    public $input_type;
+
+
+    /**
+     * @var int
+     * @see http://php.net/manual/de/filter.filters.php
+     */
+    public $filter_type = \FILTER_SANITIZE_STRING;
+
+
+    /**
+     * @see http://php.net/manual/de/function.filter-input.php
+     * @see http://php.net/manual/de/filter.filters.php
+     *
      * @param int                  $input_type  INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER oder INPUT_ENV
      * @param LoggerInterface|null $logger      PSR-3 Logger, default: null
      * @param int                  filter_type  Filter type, default: null
