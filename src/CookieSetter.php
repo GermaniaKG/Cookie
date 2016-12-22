@@ -38,10 +38,11 @@ class CookieSetter
      * See PHP doc for setcookie:
      * http://php.net/manual/de/function.setcookie.php
      *
-     * @param  string  $name
-     * @param  string  $value
-     * @param  int     $expire
-     * @return bool
+     * @param  string  $name   Cookie name
+     * @param  string  $value  Cookie value
+     * @param  int     $expire Expiration timestamp
+     *
+     * @return bool    Result of PHP's setcookie function
      */
     public function __invoke( $name, $value, $expire )
     {
