@@ -4,9 +4,22 @@ namespace Germania\Cookie;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
+/**
+ * Callable wrapper around PHP's setcookie function with logging opportunity.
+ */
+
 class CookieSetter
 {
+
+    /**
+     * @var LoggerInterface
+     */
     public $logger;
+
+
+    /**
+     * @var array
+     */
     public $defaults = [
         'path'     => '',
         'domain'   => '',
@@ -15,6 +28,10 @@ class CookieSetter
     ];
 
 
+    /**
+     * @param array                $defaults Cookie defaults
+     * @param LoggerInterface|null $logger   Optional PSR-3 Logger
+     */
     public function __construct( $defaults = array(), LoggerInterface $logger = null)
     {
         $this->defaults = array_merge($this->defaults, $defaults);
@@ -25,10 +42,11 @@ class CookieSetter
      * See PHP doc for setcookie:
      * http://php.net/manual/de/function.setcookie.php
      *
-     * @param  string  $name
-     * @param  string  $value
-     * @param  int     $expire
-     * @return bool
+     * @param  string  $name   Cookie name
+     * @param  string  $value  Cookie value
+     * @param  int     $expire Expiration timestamp
+     *
+     * @return bool    Result of PHP's setcookie function
      */
     public function __invoke( $name, $value, $expire )
     {
