@@ -56,9 +56,16 @@ $boolean = $setter( 'foo', 'bar', time()+3600 );
 use Germania\Cookie\Providers\PimpleServiceProvider;
 use Psr\Log\LoggerInterface;
 
+
 // have your Pimple DIC ready, and optionally a PSR3 Logger:
 $sp = new PimpleServiceProvider;
-$sp = new PimpleServiceProvider( $psr3_logger );
+
+$cookie_config = [
+    "path" =>     "/path/to/...",
+    "secure" =>   true,
+    "httponly" => true
+];
+$sp = new PimpleServiceProvider( $cookie_config, $psr3_logger );
 
 $sp->register( $dic );
 
@@ -75,8 +82,8 @@ Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow
 **Currently, no tests are specified.**
 
 ```bash
-$ git clone git@github.com:GermaniaKG/Downloads.git germania-downloads
-$ cd germania-downloads
+$ git clone git@github.com:GermaniaKG/Cookie.git germania-cookie
+$ cd germania-cookie
 $ cp phpunit.xml.dist phpunit.xml
 $ phpunit
 ```
