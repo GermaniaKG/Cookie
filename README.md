@@ -1,4 +1,4 @@
-#Germania\Cookie
+# Germania\Cookie
 
 Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
 
@@ -6,14 +6,14 @@ Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
 [![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 
-##Installation
+## Installation
 
 ```bash
 $ composer require germania-kg/cookie
 ```
 
 
-##Getting cookies
+## Getting cookies
 
 ```php
 <?php
@@ -29,7 +29,7 @@ $value = $getter( 'foo' );
 ```
 
 
-##Setting cookies
+## Setting cookies
 
 ```php
 <?php
@@ -69,7 +69,7 @@ $getter = $dic['Cookie.Getter'];
 ```
 
 
-##Development and Testing
+## Development and Testing
 
 Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
 **Currently, no tests are specified.**
