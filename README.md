@@ -1,4 +1,4 @@
-#Germania\Cookie
+# Germania\Cookie
 
 Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
 
@@ -6,14 +6,14 @@ Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
 [![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 
-##Installation
+## Installation
 
 ```bash
 $ composer require germania-kg/cookie
 ```
 
 
-##Getting cookies
+## Getting cookies
 
 ```php
 <?php
@@ -29,7 +29,7 @@ $value = $getter( 'foo' );
 ```
 
 
-##Setting cookies
+## Setting cookies
 
 ```php
 <?php
@@ -49,17 +49,41 @@ $setter = new CookieSetter( $defaults, $log);
 $boolean = $setter( 'foo', 'bar', time()+3600 );
 ```
 
+## Pimple Service Provider
+
+```php
+<?php
+use Germania\Cookie\Providers\PimpleServiceProvider;
+use Psr\Log\LoggerInterface;
 
 
+// have your Pimple DIC ready, and optionally a PSR3 Logger:
+$sp = new PimpleServiceProvider;
 
-##Development and Testing
+$cookie_config = [
+    "path" =>     "/path/to/...",
+    "secure" =>   true,
+    "httponly" => true
+];
+$sp = new PimpleServiceProvider( $cookie_config, $psr3_logger );
+
+$sp->register( $dic );
+
+// Grab your services;
+// See also above examaples.
+$setter = $dic['Cookie.Setter'];
+$getter = $dic['Cookie.Getter'];
+```
+
+
+## Development and Testing
 
 Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
 **Currently, no tests are specified.**
 
 ```bash
-$ git clone git@github.com:GermaniaKG/Downloads.git germania-downloads
-$ cd germania-downloads
+$ git clone git@github.com:GermaniaKG/Cookie.git germania-cookie
+$ cd germania-cookie
 $ cp phpunit.xml.dist phpunit.xml
 $ phpunit
 ```
