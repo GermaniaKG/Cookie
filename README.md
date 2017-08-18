@@ -49,7 +49,24 @@ $setter = new CookieSetter( $defaults, $log);
 $boolean = $setter( 'foo', 'bar', time()+3600 );
 ```
 
+## Pimple Service Provider
 
+```php
+<?php
+use Germania\Cookie\Providers\PimpleServiceProvider;
+use Psr\Log\LoggerInterface;
+
+// have your Pimple DIC ready, and optionally a PSR3 Logger:
+$sp = new PimpleServiceProvider;
+$sp = new PimpleServiceProvider( $psr3_logger );
+
+$sp->register( $dic );
+
+// Grab your services;
+// See also above examaples.
+$setter = $dic['Cookie.Setter'];
+$getter = $dic['Cookie.Getter'];
+```
 
 
 ##Development and Testing
