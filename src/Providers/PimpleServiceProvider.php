@@ -21,7 +21,11 @@ class PimpleServiceProvider implements ServiceProviderInterface
     /**
      * @var array
      */
-    public $cookie_config;
+    public $cookie_config = [
+              "path" =>     null,
+              "secure" =>   true,
+              "httponly" => true
+            ];
 
 
     /**
@@ -30,11 +34,10 @@ class PimpleServiceProvider implements ServiceProviderInterface
      */
     public function __construct( array $cookie_config = null, LoggerInterface $logger = null)
     {
-        $this->cookie_config = $cookie_config ?: [
-            "path" =>     null,
-            "secure" =>   true,
-            "httponly" => true
-        ];
+        if (is_array($cookie_config)):
+            $this->cookie_config = array_merge($this->cookie_config, $cookie_config)
+        endif;
+
         $this->logger = $logger ?: new NullLogger;
     }
 
@@ -46,10 +49,10 @@ class PimpleServiceProvider implements ServiceProviderInterface
     {
 
         /**
-         * @return StdClass
+         * @return array
          */
         $dic['Cookie.Config'] = function( $dic ) {
-            return (object) $this->cookie_config;
+            return $this->cookie_config;
         };
 
 
@@ -78,9 +81,9 @@ class PimpleServiceProvider implements ServiceProviderInterface
             $logger        = $dic['Cookie.Logger'];
 
             return new CookieSetter( [
-                'path'     => $cookie_config->path,
-                'secure'   => $cookie_config->secure,
-                'httponly' => $cookie_config->httponly
+                'path'     => $cookie_config['path'],
+                'secure'   => $cookie_config['secure'],
+                'httponly' => $cookie_config['httponly']
             ], $logger );
         };
 
