@@ -35,7 +35,7 @@ class PimpleServiceProvider implements ServiceProviderInterface
     public function __construct( array $cookie_config = null, LoggerInterface $logger = null)
     {
         if (is_array($cookie_config)):
-            $this->cookie_config = array_merge($this->cookie_config, $cookie_config)
+            $this->cookie_config = array_merge($this->cookie_config, $cookie_config);
         endif;
 
         $this->logger = $logger ?: new NullLogger;
