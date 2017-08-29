@@ -51,7 +51,7 @@ class PimpleServiceProvider implements ServiceProviderInterface
         /**
          * @return array
          */
-        $dic['Cookie.Config'] = function( $dic ) {
+        $dic['Cookie.Config'] = function() {
             return $this->cookie_config;
         };
 
@@ -59,7 +59,7 @@ class PimpleServiceProvider implements ServiceProviderInterface
         /**
          * @return LoggerInterface
          */
-        $dic['Cookie.Logger'] = function( $dic ) {
+        $dic['Cookie.Logger'] = function() {
             return $this->logger;
         };
 
