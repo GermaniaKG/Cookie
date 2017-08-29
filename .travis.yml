@@ -1,3 +1,4 @@
+# Default as of Sep 2017
 dist: trusty
 
 language: php
@@ -15,7 +16,7 @@ before_script:
   - composer install --no-interaction
 
 script:
-  - phpunit
+  - vendor/bin/phpunit
 
 after_script:
 
