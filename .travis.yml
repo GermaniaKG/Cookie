@@ -1,10 +1,12 @@
+# Default as of Sep 2017
 dist: trusty
 
 language: php
 
 php:
   - "5.6"
-  - "7.0"
+  # Symfony 3.3.8 component/libraries etc. do not like PHP 7.0
+  # - "7.0"
   - "7.1"
   - hhvm
 
@@ -15,7 +17,7 @@ before_script:
   - composer install --no-interaction
 
 script:
-  - phpunit
+  - vendor/bin/phpunit
 
 after_script:
 
