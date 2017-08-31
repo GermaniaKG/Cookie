@@ -1,10 +1,11 @@
-# Germania\Cookie
+# Germania KG · Cookie
 
 Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
 
 [![Build Status](https://travis-ci.org/GermaniaKG/Cookie.svg?branch=master)](https://travis-ci.org/GermaniaKG/Cookie)
 [![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/build-status/master)
 
 ## Installation
 
