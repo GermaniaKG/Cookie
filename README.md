@@ -1,6 +1,6 @@
 # Germania KG · Cookie
 
-Callable wrapper around **setcookie()** and **filter\_input( INPUT_COOKIE )**
+**Callable wrapper around PHP's *setcookie()* and _filter\_input( INPUT\_COOKIE )_**
 
 [![Build Status](https://travis-ci.org/GermaniaKG/Cookie.svg?branch=master)](https://travis-ci.org/GermaniaKG/Cookie)
 [![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
@@ -76,15 +76,27 @@ $setter = $dic['Cookie.Setter'];
 $getter = $dic['Cookie.Getter'];
 ```
 
+## Issues
 
-## Development and Testing
+See [issues list.][i0]
 
-Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
-**Currently, no tests are specified.**
+[i0]: https://github.com/GermaniaKG/Cookie/issues 
+
+
+
+## Development
 
 ```bash
 $ git clone git@github.com:GermaniaKG/Cookie.git germania-cookie
 $ cd germania-cookie
-$ cp phpunit.xml.dist phpunit.xml
-$ phpunit
+$ composer install
+```
+
+## Unit tests
+
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. 
+Run [PhpUnit](https://phpunit.de/) like this:
+
+```bash
+$ vendor/bin/phpunit
 ```
