@@ -11,7 +11,7 @@ use Slim\Http\Headers;
 use Slim\Http\RequestBody;
 use Slim\Http\UploadedFile;
 
-class CookieGetterTest extends \PHPUnit_Framework_TestCase
+class CookieGetterTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
