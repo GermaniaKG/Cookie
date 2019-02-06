@@ -2,12 +2,16 @@
 
 **Callable wrapper around PHP's *setcookie()* and _filter\_input( INPUT\_COOKIE )_**
 
-[![Build Status](https://travis-ci.org/GermaniaKG/Cookie.svg?branch=master)](https://travis-ci.org/GermaniaKG/Cookie)
-[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
+
+[![Packagist](https://img.shields.io/packagist/v/germania-kg/cookie.svg?style=flat)](https://packagist.org/packages/germania-kg/cookie)
+[![PHP version](https://img.shields.io/packagist/php-v/germania-kg/cookie.svg)](https://packagist.org/packages/germania-kg/cookie)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/Cookie.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Cookie)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/build-status/master)
 
-## Installation
+
+## Installation with Composer
 
 ```bash
 $ composer require germania-kg/cookie
@@ -83,20 +87,22 @@ See [issues list.][i0]
 [i0]: https://github.com/GermaniaKG/Cookie/issues 
 
 
-
 ## Development
 
 ```bash
-$ git clone git@github.com:GermaniaKG/Cookie.git germania-cookie
-$ cd germania-cookie
+$ git clone https://github.com/GermaniaKG/Cookie.git
+$ cd Cookie
 $ composer install
 ```
 
 ## Unit tests
 
-Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. 
-Run [PhpUnit](https://phpunit.de/) like this:
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. Run [PhpUnit](https://phpunit.de/) test or composer scripts like this:
 
 ```bash
+$ composer test
+# or
 $ vendor/bin/phpunit
 ```
+
+
