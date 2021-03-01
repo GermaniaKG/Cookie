@@ -2,25 +2,21 @@
 namespace Germania\Cookie;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
 use Psr\Log\NullLogger;
-
 
 /**
  * Callable wrapper for retrieving and filtering cookie values with logging opportunity.
  */
-class CookieGetter
+class CookieGetter implements LoggerAwareInterface
 {
 
-    /**
-     * @var LoggerInterface
-     */
-    public $logger;
+    use LoggerTrait;
 
     /**
      * @var int
      */
     public $input_type;
-
 
     /**
      * @var int
@@ -40,7 +36,7 @@ class CookieGetter
     public function __construct( $input_type, LoggerInterface $logger = null, $filter_type = null)
     {
         $this->input_type  = $input_type;
-        $this->logger      = $logger ?: new NullLogger;
+        $this->setLogger($logger ?: new NullLogger);
 
         if (!is_null($filter_type)) {
             $this->filter_type = $filter_type;
@@ -84,7 +80,7 @@ class CookieGetter
                  ? filter_var( $input[$name], $this->filter_type )
                  : null;
 
-        $this->logger->info("Get Cookie: ", ['name' => $name, 'value' => $value]);
+        $this->logger->log($this->loglevel, "Get Cookie: ", ['name' => $name, 'value' => $value]);
         return $value;
     }
 }
