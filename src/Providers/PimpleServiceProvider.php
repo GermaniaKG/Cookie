@@ -3,7 +3,7 @@ namespace Germania\Cookie\Providers;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-
+use Germania\Cookie\LoggerTrait;
 use Germania\Cookie\CookieGetter;
 use Germania\Cookie\CookieSetter;
 
@@ -12,20 +12,18 @@ use Psr\Log\NullLogger;
 
 class PimpleServiceProvider implements ServiceProviderInterface
 {
-
-    /**
-     * @var LoggerInterface
-     */
-    public $logger;
+    use LoggerTrait;
 
     /**
      * @var array
      */
     public $cookie_config = [
-              "path" =>     null,
-              "secure" =>   true,
-              "httponly" => true
-            ];
+        'path'     => '',
+        'domain'   => '',
+        'secure'   => true,
+        'httponly' => true,
+        'samesite' => 'Lax'
+    ];
 
 
     /**
