@@ -2,20 +2,16 @@
 namespace Germania\Cookie;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareInterface;
 use Psr\Log\NullLogger;
 
 /**
  * Callable wrapper around PHP's setcookie function with logging opportunity.
  */
 
-class CookieSetter
+class CookieSetter implements LoggerAwareInterface
 {
-
-    /**
-     * @var LoggerInterface
-     */
-    public $logger;
-
+    use LoggerTrait;
 
     /**
      * @var array
@@ -23,8 +19,9 @@ class CookieSetter
     public $defaults = [
         'path'     => '',
         'domain'   => '',
-        'secure'   => false,
-        'httponly' => false
+        'secure'   => true,
+        'httponly' => true,
+        'samesite' => 'Lax'
     ];
 
 
@@ -35,25 +32,32 @@ class CookieSetter
     public function __construct( $defaults = array(), LoggerInterface $logger = null)
     {
         $this->defaults = array_merge($this->defaults, $defaults);
-        $this->logger = $logger ?: new NullLogger;
+        $this->setLogger($logger ?: new NullLogger);
     }
 
     /**
      * See PHP doc for setcookie:
      * http://php.net/manual/de/function.setcookie.php
      *
-     * @param  string  $name   Cookie name
-     * @param  string  $value  Cookie value
-     * @param  int     $expire Expiration timestamp
+     * @param  string  $name    Cookie name
+     * @param  string  $value   Cookie value
+     * @param  int     $expires Expiration timestamp
      *
      * @return bool    Result of PHP's setcookie function
      */
-    public function __invoke( $name, $value, $expire )
+    public function __invoke( $name, $value, $expires )
     {
         extract( $this->defaults );
 
-        $result = setcookie( $name, $value, $expire, $path, $domain, $secure, $httponly);
-        $this->logger->info("Set Cookie: ", ['name' => $name, 'result' => $result]);
+        $result = setcookie( $name, $value, [
+            'expires'  => $expires,
+            'path'     => $path,
+            'domain'   => $domain,
+            'secure'   => $secure,
+            'httponly' => $httponly,
+            'samesite' => $samesite
+        ]);
+        $this->logger->log($this->loglevel, "Set Cookie: ", ['name' => $name, 'result' => $result]);
         return $result;
     }
 }
