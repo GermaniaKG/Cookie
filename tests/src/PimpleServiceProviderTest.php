@@ -2,6 +2,8 @@
 namespace tests;
 
 use Germania\Cookie\Providers\PimpleServiceProvider;
+use Germania\Cookie\CookieGetter;
+use Germania\Cookie\CookieSetter;
 
 use Pimple\ServiceProviderInterface;
 use Pimple\Container;
@@ -23,9 +25,14 @@ class PimpleServiceProviderTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf( ServiceProviderInterface::class, $sut );
 
-        $this->assertInstanceOf( LoggerInterface::class, $dic['Cookie.Logger'] );
-        $this->assertTrue( is_callable( $dic['Cookie.Getter']) );
-        $this->assertTrue( is_callable( $dic['Cookie.Setter']) );
+
+        $this->assertInstanceOf( LoggerInterface::class, $dic['Cookie.Logger']);
+        $this->assertInstanceOf( CookieGetter::class,    $dic[CookieGetter::class]);
+        $this->assertInstanceOf( CookieSetter::class,    $dic[CookieSetter::class]);
+
+        $this->assertIsArray(    $dic['Cookie.Config']);
+        $this->assertIsCallable( $dic['Cookie.Getter']);
+        $this->assertIsCallable( $dic['Cookie.Setter']);
 
     }
 

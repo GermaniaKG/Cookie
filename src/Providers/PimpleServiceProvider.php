@@ -65,7 +65,7 @@ class PimpleServiceProvider implements ServiceProviderInterface
         /**
          * @return Callable
          */
-        $dic['Cookie.Getter'] = function( $dic ) {
+        $dic[CookieGetter::class] = function( $dic ) {
             $logger = $dic['Cookie.Logger'];
             return new CookieGetter( \INPUT_COOKIE, $logger );
         };
@@ -74,7 +74,23 @@ class PimpleServiceProvider implements ServiceProviderInterface
         /**
          * @return Callable
          */
+        $dic['Cookie.Getter'] = function( $dic ) {
+            return $dic[CookieGetter::class];
+        };
+
+
+        /**
+         * @return Callable
+         */
         $dic['Cookie.Setter'] = function( $dic ) {
+            return $dic[CookieSetter::class];
+        };
+
+
+        /**
+         * @return Callable
+         */
+        $dic[CookieSetter::class] = function( $dic ) {
             $cookie_config = $dic['Cookie.Config'];
             $logger        = $dic['Cookie.Logger'];
 
