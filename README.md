@@ -55,13 +55,49 @@ $setter = new CookieSetter( $defaults, $log);
 $boolean = $setter( 'foo', 'bar', time()+3600 );
 ```
 
-## Pimple Service Provider
+## Service Providers and Dependency Injection
+
+### PHP-DI
+
+```php
+use Germania\Cookie\Providers\PhpDiDefinitions;
+use Germania\Cookie\CookieGetter;
+use Germania\Cookie\CookieSetter;
+
+$defs = new PhpDiDefinitions();
+$cookie_config = [
+    "path" =>     "/path/to/...",
+    "secure" =>   true,
+    "httponly" => true,
+    'samesite'  => 'Lax'
+];
+$defs = new PhpDiDefinitions( $cookie_config, $psr3_logger );
+
+// Setup PHP-DI
+$builder = new \DI\ContainerBuilder();
+$builder->addDefinitions( $defs->getArray() );
+$container = $builder->build();
+
+
+// Grab your services;
+// See also above examaples.
+$setter = $container->get('Cookie.Setter');
+$setter = $container->get(CookieSetter::class);
+
+$getter = $container->get('Cookie.Getter');
+$getter = $container->get(CookieGetter::class);
+```
+
+
+
+### Pimple Service Provider
 
 ```php
 <?php
 use Germania\Cookie\Providers\PimpleServiceProvider;
 use Psr\Log\LoggerInterface;
-
+use Germania\Cookie\CookieGetter;
+use Germania\Cookie\CookieSetter;
 
 // have your Pimple DIC ready, and optionally a PSR3 Logger:
 $sp = new PimpleServiceProvider;
@@ -69,7 +105,8 @@ $sp = new PimpleServiceProvider;
 $cookie_config = [
     "path" =>     "/path/to/...",
     "secure" =>   true,
-    "httponly" => true
+    "httponly" => true,
+    'samesite'  => 'Lax'
 ];
 $sp = new PimpleServiceProvider( $cookie_config, $psr3_logger );
 
@@ -78,7 +115,10 @@ $sp->register( $dic );
 // Grab your services;
 // See also above examaples.
 $setter = $dic['Cookie.Setter'];
+$setter = $dic[CookieSetter::class];
+
 $getter = $dic['Cookie.Getter'];
+$getter = $dic[CookieGetter::class];
 ```
 
 ## Issues
