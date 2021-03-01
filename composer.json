@@ -23,7 +23,7 @@
     },
 
     "require": {
-        "php": "^5.6|^7.0|^8.0",
+        "php": "^7.3|^8.0",
         "psr/log": "^1.0"
     },
 
@@ -35,7 +35,8 @@
         "php-coveralls/php-coveralls": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.0",
         "spatie/phpunit-watcher": "^1.0",
-        "phpstan/phpstan": "^0.12"
+        "phpstan/phpstan": "^0.12",
+        "php-di/php-di": "^6.3"
     },
 
     "scripts": {
