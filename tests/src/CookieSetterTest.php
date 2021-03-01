@@ -23,6 +23,6 @@ class CookieSetterTest extends \PHPUnit\Framework\TestCase
         // Code smell: silence operator
         $result = @$sut($name, $value, $expire );
 
-        $this->assertInternalType("bool", $result);
+        $this->assertIsBool($result);
     }
 }
