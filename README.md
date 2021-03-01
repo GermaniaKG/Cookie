@@ -44,8 +44,9 @@ use Germania\Cookie\CookieSetter;
 $defaults = [
     'path'     => '',
     'domain'   => '',
-    'secure'   => false,
-    'httponly' => false
+    'secure'   => true,
+    'httponly' => true,
+    'samesite'  => 'Lax'
 ];
 
 // Optionally, have your PSR-3 Logger at hand
@@ -84,7 +85,7 @@ $getter = $dic['Cookie.Getter'];
 
 See [issues list.][i0]
 
-[i0]: https://github.com/GermaniaKG/Cookie/issues 
+[i0]: https://github.com/GermaniaKG/Cookie/issues
 
 
 ## Development
