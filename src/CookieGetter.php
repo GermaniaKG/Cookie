@@ -29,9 +29,9 @@ class CookieGetter implements LoggerAwareInterface
      * @see http://php.net/manual/de/function.filter-input.php
      * @see http://php.net/manual/de/filter.filters.php
      *
-     * @param int                  $input_type  INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER oder INPUT_ENV
-     * @param LoggerInterface|null $logger      PSR-3 Logger, default: null
-     * @param int                  filter_type  Filter type, default: null
+     * @param int                  $input_type   INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER oder INPUT_ENV
+     * @param LoggerInterface|null $logger       PSR-3 Logger, default: null
+     * @param int|null             $filter_type  Filter type, default: null
      */
     public function __construct( $input_type, LoggerInterface $logger = null, $filter_type = null)
     {
@@ -50,7 +50,6 @@ class CookieGetter implements LoggerAwareInterface
      * This method does not use filter_input here since it is hard to unit-test;
      * see: http://stackoverflow.com/questions/4158307/how-to-make-a-phpunit-test-that-depends-on-real-post-get-data
      *
-     * @var    string $name Cookie name
      * @return string Cookie value
      */
     public function __invoke( $name )
