@@ -5,11 +5,7 @@
 
 [![Packagist](https://img.shields.io/packagist/v/germania-kg/cookie.svg?style=flat)](https://packagist.org/packages/germania-kg/cookie)
 [![PHP version](https://img.shields.io/packagist/php-v/germania-kg/cookie.svg)](https://packagist.org/packages/germania-kg/cookie)
-[![Build Status](https://img.shields.io/travis/GermaniaKG/Cookie.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Cookie)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Cookie/build-status/master)
-
+[![Tests](https://github.com/GermaniaKG/Cookie/actions/workflows/tests.yml/badge.svg)](https://github.com/GermaniaKG/Cookie/actions/workflows/tests.yml)
 
 ## Installation with Composer
 
